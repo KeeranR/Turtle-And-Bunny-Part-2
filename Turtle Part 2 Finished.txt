@@ -1,0 +1,273 @@
+//Image of turtle
+PImage turtle;
+
+//Image of bunny
+PImage bunny;
+
+//Float....for some reason
+float x=0;
+
+//Int for stage
+int stage;
+
+//Int for turtleX' location and to make it move
+int turtleX = 10;
+
+//Int for dabunnyX' location and to make it move
+int dabunnyX = 10;
+
+//Int X loaction for the text onend screen
+int centerWidth=130;
+
+//Int Y location for the text on end screen
+int centerHeight=350;
+
+//Int X location for the text on end screen
+int centerrWidth=127;
+
+//Int Y location for the text on end screen
+int centerrHeight=600;
+
+//Int for the X location for the reset button
+int rectReset=325;
+
+//Int for the Y location for the reset button
+int Rectreset=405;
+
+//Boolean to set the value if you press the reset button it will go to the start screen
+boolean displayValue=false;
+
+void setup()
+{
+  //Size of screen
+  size(800, 800); 
+
+  //To load the image of the turtle
+  turtle=loadImage("turtle.png");
+
+  //To load the image of the dabunny
+  bunny=loadImage("DABunny.jpg");
+}
+void draw()
+{
+  //if the display value is false
+  if (displayValue==false)
+  {
+    //Rectangle mode set to corner
+    rectMode(CORNER);
+
+    //Background colour
+    background(0);
+
+    //Turtle image and x-y location
+    image(turtle, turtleX, 200);
+
+    //dabunny image and x-y location
+    image(bunny, dabunnyX, 500);
+
+    //here comes the long part
+    //Finish Line
+    rect(600, 0, 25, 50000);
+
+    //Middle line to separate the turtle and the bunny
+    rect(0, 350, 600, 25);
+
+    //Checkered flag 1
+    rect(640, 0, 55, 65);
+
+    //Checkered flag 2
+    rect(734, 0, 55, 65);
+
+    //Checkered flag 3
+    rect(690, 67, 55, 65);
+
+    //Checkered flag 4
+    rect(640, 134, 55, 65);
+
+    //Checkered flag 5
+    rect(734, 134, 55, 65);
+
+    //Checkered flag 6
+    rect(686, 204, 55, 65);
+
+    //Checkered flag 7
+    rect(640, 271, 55, 65);
+
+    //Checkered flag 8
+    rect(734, 271, 55, 65);
+
+    //Checkered flag 9
+    rect(690, 338, 55, 65);
+
+    //Checkered flag 10
+    rect(640, 404, 55, 65);
+
+    //Checkered flag 11
+    rect(734, 404, 55, 65);
+
+    //Checkered flag 12
+    rect(690, 471, 55, 65);
+
+    //Checkered flag 13
+    rect(640, 538, 55, 65);
+
+    //Checkered flag 14
+    rect(734, 538, 55, 65);
+
+    //Checkered flag 15
+    rect(690, 603, 55, 65);
+
+    //Checkered flag 16
+    rect(640, 670, 55, 65);
+
+    //Checkered flag 17
+    rect(690, 735, 55, 65);
+
+    //Checkered flag 18
+    rect(734, 670, 55, 65);
+
+    //Fill colour for the 57 rectangles
+    fill(255);
+
+    //If the turtle touches the finish line 
+    if (turtleX >= 500)
+    {
+      //Then the screen goes onto stage 3
+      stage = 3;
+    }
+    //If dabunny touches the finish line
+    if (dabunnyX>=500)
+    {
+      //Then the screen goes onto stage 4
+      stage=4;
+    }
+
+    //When the system goes to stage 3
+    if (stage==3)
+    {
+      //If the turtle touches the finish line, then it displays the end screen
+      displayValue=true;
+
+      //Text size for the end screen
+      textSize(80);
+
+      //Text appears on the screen to inform that the game ended
+      text("Game Over!", centerWidth, centerHeight);
+
+      //Text to inform who won
+      text("Turtle Wins", centerrWidth, centerrHeight);
+
+      //Text mode's location on the end screen
+      textMode(CORNER);
+
+      //Rectangle to show the text reset as an actual button
+      rect(rectReset, Rectreset, 150, 70);
+
+      //Text size set to 45 --Text reset
+      textSize(45);
+
+      //The fill colour to hide the excess lines
+      fill(0);
+
+      //Rectangle to hide the middle line in the end screen
+      rect(600, 0, 25, 50000);
+
+      //Rectangle to hide the finish line in the end screen
+      rect(0, 350, 600, 25);
+
+      //Rectangle to hide the checkered line in the end screen
+      rect(640, 0, 500, 800);
+
+      //Colour to fill the reset text
+      fill(0);
+
+      //Text to show the reset button
+      text("Reset", 337, 455);
+    }
+
+    //If the system goes to stage 4
+    if (stage==4)
+    {
+      //If the turtle touches the finish line, then it displays the end screen
+      displayValue=true;
+
+      //The fill colour to hide the excess lines
+      fill(0);
+
+      //Rectangle to hide the middle line in the end screen
+      rect(600, 0, 25, 50000);
+
+      //Rectangle to hide the finish line in the end screen
+      rect(0, 350, 600, 25);
+
+      //Rectangle to hide the checkered line in the end screen
+      rect(640, 0, 500, 800);
+
+      //Text to show the end screen text
+      fill(255);
+
+      //Text size for the end screen
+      textSize(90);
+
+      //Text appears on the screen to inform that the game ended
+      text("Game Over!", centerWidth, centerHeight);
+
+      //Text to inform who won
+      text("DABunny", centerrWidth, centerrHeight);
+
+      text("Wins", centerrWidth, 750);
+
+      //Text mode's location for the end screen
+      textMode(CORNER);
+
+      //Rectangle to show the text reset as an actual button
+      rect(rectReset, Rectreset, 150, 70);
+
+      //Text size set to 45 --Text reset
+      textSize(45);
+
+      //Colour to fill the reset text
+      fill(0);
+
+      //Text to show the reset button
+      text("Reset", 337, 455);
+    }
+  }
+}
+
+void keyPressed()
+{
+  //If you press the W key
+  if (key=='w'||key=='W')
+  {
+    //The turtle moves to the right by 3 X coordinates
+    turtleX=turtleX+3;
+  }
+  //If you press the O key
+  if (key=='o'||key=='O')
+  {
+    //Dabunny moves to the right by 3 X coordinates
+    dabunnyX=dabunnyX+3;
+  }
+}
+
+void mouseClicked()
+{
+  //If you click in between these coordinates
+  if (mouseX > 325 && mouseX < 475 && mouseY > 405 && mouseY < 475)
+  {
+    //The display value will go back to the start
+    displayValue=false;
+
+    //The bunny's x location will go back to the coord* given
+    dabunnyX = 10;
+
+    //The turtle's x location will go back to the coord* given
+    turtleX = 10;
+
+    //The stage will go back to the start -- showing the finish line and checkered line
+    stage = 0;
+  }
+}
+
+//*Coord is short for coordinates
